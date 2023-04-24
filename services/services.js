@@ -1,6 +1,7 @@
 const db = require('./db');
 const helper = require('./helper');
 
+
 exports.authUser = async(req, res) => {
     try {
         const result = await helper.checkAuthUser(req.body.username);
@@ -62,7 +63,7 @@ exports.createUsers = async(req, res) => {
             if(await helper.checkMultiAuthUser(req.body.username) !== 0){                
                 res.send("Credentials already in the database.");  
             } else {
-                db.query("INSERT INTO users (username) VALUES ('"+ req.body.username +"')", (err, rows) => {
+                db.query("INSERT INTO users (username) VALUES ('"+ await helper.sanitize(req.body.username) +"')", (err, rows) => {
                     if(err){
                         res.send('Query error: ' + err.sqlMessage);            
                     }else{

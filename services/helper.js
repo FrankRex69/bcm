@@ -1,4 +1,5 @@
 const db = require('./db');
+const sanitizer = require('sanitizer');
 
 exports.checkAuthUser = async(username) => {
     return new Promise((resolve, reject)=>{
@@ -27,4 +28,14 @@ exports.checkMultiAuthUser = async(username) => {
             }
         });
     });
+}
+
+exports.sanitize = async(unsanitized_element) => {    
+    let clean = sanitizer.sanitize(unsanitized_element, function(str) {
+     return str;
+    });
+    
+    clean = clean.replace(/<(?:.|\n)*?>/gm, "");
+    clean = clean.replace(/(?:(?:\r\n|\r|\n)\s*){2,}/ig, "\n");
+    return clean.trim();
 }
