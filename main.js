@@ -18,7 +18,7 @@ app.listen(port, () => {
   console.log(`http://localhost:${port}/authUser`)
 });
 
-//evita che nodejs si chiuda su un errore
+//avoid nodejs exiting on error
 process.on('uncaughtException', function (err) {
   console.log('Caught exception: ', err);
 });
