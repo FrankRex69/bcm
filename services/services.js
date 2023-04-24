@@ -4,13 +4,12 @@ const helper = require('./helper');
 
 exports.authUser = async(req, res) => {
     try {
-        const result = await helper.checkAuthUser(req.body.username);
+        const result = await helper.checkAuthUser(req.body.username, req.body.password);
         if(result == 0){
             res.send("User and/or password not valid");
         } else {
-            res.send("User password valid !!");
+            res.send("User and password valid !!");
         }
-        //res.status(200).json({result});
     } catch(err) {        
         res.sendStatus(err.message);
     }
@@ -25,7 +24,7 @@ exports.getUsers = async(req, res) => {
 
         console.log("user e pass:" + username + password);
         // --------------
-        const result = await helper.checkAuthUser(username);
+        const result = await helper.checkAuthUser(username, password);
         if(result == 0){
             res.send("User and/or password not valid");
         } else {
@@ -51,25 +50,27 @@ exports.createUsers = async(req, res) => {
         // verify basic auth credentials
         const base64Credentials =  req.headers.authorization.split(' ')[1];
         const credentials = Buffer.from(base64Credentials, 'base64').toString('ascii');
-        const [usernameBasicAuth, password] = credentials.split(':');
-
-        
+        const [usernameBasicAuth, passwordBasicAuth] = credentials.split(':');       
         // --------------
 
-        const result = await helper.checkAuthUser(usernameBasicAuth);
+        const result = await helper.checkAuthUser(usernameBasicAuth, passwordBasicAuth);
         if(result == 0){
             res.send("User and/or password not valid.");
         } else {
             if(await helper.checkMultiAuthUser(req.body.username) !== 0){                
                 res.send("Credentials already in the database.");  
             } else {
-                db.query("INSERT INTO users (username) VALUES ('"+ await helper.sanitize(req.body.username) +"')", (err, rows) => {
-                    if(err){
-                        res.send('Query error: ' + err.sqlMessage);            
-                    }else{
-                        res.send('Correct insert user with id: ' + rows.insertId);
-                    }
-                });
+                if(await helper.validate(req.body.email)){
+                    db.query("INSERT INTO users (username, password, email) VALUES ('"+ await helper.sanitize(req.body.username) +"', '"+ await helper.sanitize(req.body.password) +"', '"+ await helper.sanitize(req.body.email) +"')", (err, rows) => {
+                        if(err){
+                            res.send('Query error: ' + err.sqlMessage);            
+                        }else{
+                            res.send('Correct insert user with id: ' + rows.insertId);
+                        }
+                    });
+                } else {
+                    res.send("Email not valid.");
+                }
             }      
         }
     } catch(error) {        
