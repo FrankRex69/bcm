@@ -65,10 +65,8 @@ exports.createUsers = async(req, res) => {
                 db.query("INSERT INTO users (username) VALUES ('"+ req.body.username +"')", (err, rows) => {
                     if(err){
                         res.send('Query error: ' + err.sqlMessage);            
-                    }else{                      
-                        //res.json(rows);
+                    }else{
                         res.send('Correct insert user with id: ' + rows.insertId);
-                        //res.status(200).send(req.body) 
                     }
                 });
             }      

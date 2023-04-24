@@ -8,5 +8,4 @@ router.get("/getUsers", services.getUsers);
 
 router.post("/createUser", services.createUsers);
 
-
 module.exports = router;
