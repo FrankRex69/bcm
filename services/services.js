@@ -20,9 +20,7 @@ exports.getUsers = async(req, res) => {
         // verify basic auth credentials
         const base64Credentials =  req.headers.authorization.split(' ')[1];
         const credentials = Buffer.from(base64Credentials, 'base64').toString('ascii');
-        const [username, password] = credentials.split(':');
-
-        console.log("user e pass:" + username + password);
+        const [username, password] = credentials.split(':');        
         // --------------
         const result = await helper.checkAuthUser(username, password);
         if(result == 0){
