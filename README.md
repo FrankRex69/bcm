@@ -11,7 +11,7 @@ $ docker-compose --env-file .env up (before you rename file backend/.env.example
 
 # PHPMYADMIN
 http://localhost:8088/
-user: root
-pass: bcm
+user: user
+pass: password
 
 ```
