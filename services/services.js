@@ -1,7 +1,6 @@
 const db = require('./db');
 const helper = require('./helper');
 
-
 exports.authUser = async(req, res) => {
     try {
         const result = await helper.checkAuthUser(req.body.username, req.body.password);
