@@ -6,40 +6,15 @@ $ docker rm $(docker ps -a -q)
 
 # Docker (in root)
 $ docker network create proxy
-$ docker-compose up (before you rename file backend/.env.example like backend/.env)
-```
-
-## DATABASE MYSQL SETUP
-```bash
-http://localhost:8088/
-user: user
-pass: password
-
-# Create table
-CREATE TABLE `users`
-(
-  `id`            INT(11) NOT NULL auto_increment ,
-  `username`      VARCHAR(50) NOT NULL ,
-  `email`         VARCHAR(50) NOT NULL ,
-  `password`      VARCHAR(50) NOT NULL ,
-  `datainsert`    DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ,
-  PRIMARY KEY (`id`),
-  UNIQUE `idx_name_unique` (`username`(50))
-)
-engine = innodb charset=utf8mb4 COLLATE utf8mb4_general_ci;
-
-
-# Insert admin account in table
-INSERT INTO users(username,password,email) 
-VALUES 
-('admin','pwd','qwerty@asdfg.com')
-
+$ docker-compose --env-file .env up (before you rename file backend/.env.example like backend/.env)
 ```
 
 ## INFO RUN APP
 ```bash
 1) in terminal "npm i" ==> install dependencies
-2) in terminal "node main.js" ==> run app
+2) in terminal "node main.js" ==> create table-db, insert admin account into db, run app
+
+ps) in problem case use info "DATABASE MYSQL SETUP" in README.md
 
 ```
 
@@ -88,5 +63,32 @@ RESPONSE-ERROR: "missing credential" (case BASIC AUTH NOT PRESENT)
 ```bash
 It's present script for validation only email
 It's present script for sanitaze input
+
+```
+
+## DATABASE MYSQL SETUP
+```bash
+http://localhost:8088/
+user: user
+pass: password
+
+# Create table
+CREATE TABLE `users`
+(
+  `id`            INT(11) NOT NULL auto_increment ,
+  `username`      VARCHAR(50) NOT NULL ,
+  `email`         VARCHAR(50) NOT NULL ,
+  `password`      VARCHAR(50) NOT NULL ,
+  `datainsert`    DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ,
+  PRIMARY KEY (`id`),
+  UNIQUE `idx_name_unique` (`username`(50))
+)
+engine = innodb charset=utf8mb4 COLLATE utf8mb4_general_ci;
+
+
+# Insert admin account in table
+INSERT INTO users(username,password,email) 
+VALUES 
+('admin','pwd','qwerty@asdfg.com')
 
 ```
