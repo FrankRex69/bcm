@@ -36,7 +36,14 @@ VALUES
 
 ```
 
-## API REST INFO
+## INFO RUN APP
+```bash
+1) in terminal "npm i" ==> install dependencies
+2) in terminal "node main.js" ==> run app
+
+```
+
+## API REST INFO (We used Postman tool)
 ```bash
 # API User Authorization
 METHOD: POST
