@@ -66,7 +66,7 @@ It's present script for sanitaze input
 
 ```
 
-## DATABASE MYSQL SETUP
+## DATABASE MYSQL SETUP (case problem with automatic setup only)
 ```bash
 http://localhost:8088/
 user: user
