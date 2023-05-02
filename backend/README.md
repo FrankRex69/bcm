@@ -11,8 +11,9 @@ $ docker-compose --env-file .env up (before you rename file backend/.env.example
 
 ## INFO RUN APP
 ```bash
-1) in terminal "npm i" ==> install dependencies
-2) in terminal "node main.js" ==> create table-db, insert admin account into db, run app
+1) in terminale "cd backend"
+2) in terminal "npm i" ==> install dependencies
+3) in terminal "node main.js" ==> create table-db, insert admin account into db, run app
 
 ps) in problem case use info "DATABASE MYSQL SETUP" in README.md
 
