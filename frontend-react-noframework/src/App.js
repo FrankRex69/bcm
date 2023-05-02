@@ -1,25 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import React, {useState} from 'react';
+import Post from './FacebookPost';
 
+// PROPS
+
+
+
+// JSX
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  const [annunci, setAnnunci] = useState([
+    {author: "Checco", description: "sto lavorando"},
+    {author: "Silvia", description: "Raccoglie la Vitabbia"},
+    {author: "Betta", description: "sta studiando"}
+  ]);
+  
+  return(
+  <div className='Container'>
+   {annunci.map((chiave, index) => (
+    <Post key={index} author={chiave.author} description={chiave.description}/>
+   ))}
+  </div>
+)
+
 }
 
 export default App;
