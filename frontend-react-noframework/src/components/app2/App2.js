@@ -45,7 +45,7 @@ const App2 = () => {
     const newTodos = [...dati, {name: dato}]
     setDato(newTodos);
   }
- const completaTodo = (index) => {
+  const completaTodo = (index) => {
     const newTodos = [...dati]
     newTodos[index].completato = true;
     setDato(newTodos);
