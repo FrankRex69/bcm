@@ -1,0 +1,14 @@
+.Post {
+  border: 1px solid #555;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 300px;
+}
+
+.Container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
