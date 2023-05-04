@@ -4,7 +4,7 @@ const cors = require('cors');
 const router = require('./router/routes');
 const services = require('./services/helper');
 const app = express();
-const port = 3000;
+const port = 3001;
 
 (async () => {
   console.log(await services.checkTable());

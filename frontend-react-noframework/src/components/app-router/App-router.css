@@ -1,0 +1,18 @@
+.app-router {
+  text-align: center;
+}
+ .Navbar {
+  height: 10vh;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #444;
+  color: white;
+ }
+
+ .Links {
+  display: flex;
+  justify-content: space-between;
+  list-style: none;
+  width: 20%;
+ }

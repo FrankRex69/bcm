@@ -6,12 +6,12 @@ $ docker rm $(docker ps -a -q)
 
 # Docker (in root)
 $ docker network create proxy
-$ docker-compose --env-file .env up (before you rename file backend/.env.example like backend/.env)
+$ docker-compose --env-file backend/.env up (before you rename file backend/.env.example like backend/.env)
 ```
 
 ## INFO RUN APP
 ```bash
-1) in terminale "cd backend"
+1) in terminal "cd backend"
 2) in terminal "npm i" ==> install dependencies
 3) in terminal "node main.js" ==> create table-db, insert admin account into db, run app
 
