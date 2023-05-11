@@ -1,0 +1,14 @@
+{
+  "name": "bcm",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "back:dev": "cd backend && node main.js",
+    "front:dev": "cd frontend-react-noframework && npm run start"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
