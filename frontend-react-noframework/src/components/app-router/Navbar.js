@@ -18,6 +18,9 @@ const Navbar = () => {
         <Link style={{color: 'white'}} to="/contact">
           <li>Contact</li>
         </Link>
+        <Link style={{color: 'white'}} to="/nodb">
+          <li>NoDb</li>
+        </Link>
         </ul>        
     </div>
   )

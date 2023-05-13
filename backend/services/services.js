@@ -78,3 +78,13 @@ exports.createUsers = async(req, res) => {
     }
 };
 
+exports.noDb = async(req, res) => {
+    try {
+        res.json({
+            fieldtest: "test"
+        });
+    } catch(err) {        
+        res.sendStatus(err.message);
+    }
+};
+

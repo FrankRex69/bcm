@@ -18,12 +18,20 @@ const port = 3001;
 
   app.use("/", router);
 
+  // app.listen(port, () => {
+  //   console.log(`App listening on port ${port}`)
+  //   console.log(`http://${ipAddress}:${port}`)
+  //   console.log(`http://${ipAddress}:${port}/getUsers`)
+  //   console.log(`http://${ipAddress}:${port}/createUser`)
+  //   console.log(`http://${ipAddress}:${port}/authUser`)
+  // });
+
   app.listen(port, () => {
     console.log(`App listening on port ${port}`)
-    console.log(`http://${ipAddress}:${port}`)
-    console.log(`http://${ipAddress}:${port}/getUsers`)
-    console.log(`http://${ipAddress}:${port}/createUser`)
-    console.log(`http://${ipAddress}:${port}/authUser`)
+    console.log(`http://localhost:${port}`)
+    console.log(`http://localhost:${port}/getUsers`)
+    console.log(`http://localhost:${port}/createUser`)
+    console.log(`http://localhost:${port}/authUser`)
   });
 
   //avoid nodejs exiting on error

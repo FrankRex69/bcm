@@ -4,17 +4,6 @@ import './index.css';
 import AppRouter from './components/app-router/App-router';
 import reportWebVitals from './reportWebVitals';
 
-import {internalIpV6, internalIpV4} from 'internal-ip';
-
-
-setTimeout(() => {
- console.log(internalIpV6());
-//=> 'fe80::1'
-  console.log(internalIpV4());
-//=> '10.0.0.79'
-}, 3000);
-
-
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

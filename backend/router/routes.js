@@ -11,4 +11,7 @@ router.get("/getUsers", services.getUsers);
 // route for create new user
 router.post("/createUser", services.createUsers);
 
+// route for message no db
+router.post("/nodb", services.noDb);
+
 module.exports = router;
