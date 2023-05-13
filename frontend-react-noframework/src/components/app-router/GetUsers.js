@@ -4,7 +4,7 @@ import './App-router.css';
 import axios from "axios";
 // import {internalIpV4} from 'internal-ip';
 
-const NoDb = () => {
+const GetUsers = () => {
 
   useEffect(()=>{
     fetchData();
@@ -13,19 +13,15 @@ const NoDb = () => {
   const [posts, setPosts] = useState([]);
 
   const fetchData = async() => {  
-    try {
-      // const localHost = await internalIpV4();     
-      let rawData = await axios.post('http://localhost:3001/noDb', {
-        username: "admin",
-        password: "pwd"
-      }, 
-      {
-        headers: {
-          'Content-Type': 'multipart/form-data',
-          "Access-Control-Allow-Origin": "*"
+    try {    
+      let rawData = await axios.get('http://localhost:3001/getUsers', {
+        auth: {
+          username: 'admin',
+          password: 'pwd'
         }
       });
-      const posts = JSON.stringify(rawData.data.fieldtest);
+      const posts = JSON.stringify(rawData.data);
+      console.log('posts: ' , posts);
       setPosts(posts);
     } catch (error) {
       console.log(error);
@@ -39,4 +35,4 @@ const NoDb = () => {
   )
 }
 
-export default NoDb;
+export default GetUsers;

@@ -8,6 +8,7 @@ import Home from './Home';
 import About from './About';
 import Contact from './Contact';
 import NoDb from './NoDb';
+import GetUsers from './GetUsers';
 
 
 const AppRouter = () => {  
@@ -20,6 +21,7 @@ const AppRouter = () => {
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/nodb" element={<NoDb />} />
+          <Route path="/getusers" element={<GetUsers />} />
         </Routes>        
       </div>
     </BrowserRouter>

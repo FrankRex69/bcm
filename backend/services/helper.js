@@ -8,6 +8,7 @@ exports.checkTable = async() => {
             if(error){
                 await createInitTable();
                 await insertInitAdmin();
+                await insertOtherUserInit();
                 return resolve("create init table and insert admin account");
             }
             return resolve("init table was present");
@@ -38,6 +39,18 @@ const createInitTable = async() => {
 
 const insertInitAdmin = async() => {    
     let queryTable = "INSERT INTO users (username,password,email) VALUES ('admin','pwd','qwerty@asdfg.com')";
+    return new Promise((resolve, reject)=>{ 
+        db.query(queryTable,  (error, elements)=>{
+            if(error){                
+                return reject(error);
+            }           
+            return resolve(elements);
+        });
+    });
+}
+
+const insertOtherUserInit = async() => {    
+    let queryTable = "INSERT INTO users (username,password,email) VALUES ('userInit','pwdInit','qwertyInit@asdfg.com')";
     return new Promise((resolve, reject)=>{ 
         db.query(queryTable,  (error, elements)=>{
             if(error){                

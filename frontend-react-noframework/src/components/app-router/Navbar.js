@@ -21,6 +21,9 @@ const Navbar = () => {
         <Link style={{color: 'white'}} to="/nodb">
           <li>NoDb</li>
         </Link>
+        <Link style={{color: 'white'}} to="/getusers">
+          <li>GetUsers</li>
+        </Link>
         </ul>        
     </div>
   )
