@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import './App-router.css';
 
 import axios from "axios";
+import {internalIpV4} from 'internal-ip';
 
 const Home = () => {
 
@@ -13,17 +14,12 @@ const Home = () => {
 
   const fetchData = async() => {  
     try {
-      //let rawData = await axios.post('http://localhost:3001/authUser', {
-      let rawData = await axios.post('http://localhost:3001/authUser', {
+      const localHost = await internalIpV4();     
+      let rawData = await axios.post('http://'+localHost+':3001/authUser', {
         username: "admin",
         password: "pwd"
       });
-      //const posts = await rawData.json();      
-      console.log('rawData: ' , rawData.data);
-      console.log('type of rawData: ' + typeof rawData.data);
-      const posts = rawData.data;
-      //const posts = Array.from(rawData.data);
-      console.log('posts: ' + posts);
+      const posts = rawData.data; 
       setPosts(posts);
     } catch (error) {
       console.log(error);
